@@ -79,11 +79,11 @@ class TodoControllerTest {
         //given
         Todo todo = new Todo(1,"To Pass ITA", true,2);
         //when
-        ResultActions result = mvc.perform(get("/todos")
+        ResultActions result = mvc.perform(post("/todos")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(todo)));
         //then
-        result.andExpect(status().isOk())
+        result.andExpect(status().isCreated())
                 .andDo(print());
     }
 
